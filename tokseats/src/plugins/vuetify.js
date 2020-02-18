@@ -10,8 +10,8 @@ export default new Vuetify({
   theme: {
     themes: {
       light: {
-        primary: "teal",
-        secondary: "#indigo"
+        primary: "#37b7a6",
+        secondary: "#f8d700"
       }
     }
   }
