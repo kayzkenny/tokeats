@@ -16,9 +16,6 @@ export default {
   components: {
     AppBar,
     Footer
-  },
-  created() {
-    this.$store.dispatch("menu/loadMenuAction"); // get menu state
   }
 };
 </script>

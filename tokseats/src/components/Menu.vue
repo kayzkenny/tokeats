@@ -65,6 +65,9 @@ export default {
   // TODO
   computed: {
     ...mapGetters("menu", ["meals", "singles", "sides", "drinks"])
+  },
+  created() {
+    this.$store.dispatch("menu/loadMenuAction"); // get menu state
   }
 };
 </script>
