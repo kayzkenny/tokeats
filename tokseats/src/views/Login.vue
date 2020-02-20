@@ -74,7 +74,7 @@ export default {
     login() {
       this.loading = true;
       if (this.email && this.password) {
-        let ref = db.collection("provider").doc(this.email);
+        let ref = db.collection("users").doc(this.email);
         // get reference to the users document, the users email is the id of the doc
         ref.get().then(doc => {
           if (!doc.exists) {
@@ -87,7 +87,7 @@ export default {
                 this.loading = false;
                 this.success = "You successfully logged in";
                 this.$store.dispatch("loadUserAction"); // get user state
-                this.$router.replace({ name: "dashboard" });
+                this.$router.replace({ name: "Home" });
               })
               .catch(error => {
                 // alert(error);

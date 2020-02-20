@@ -147,9 +147,9 @@ export default {
           if (this.password && this.password == this.confirmPassword) {
             this.feedback = null;
             // this.loading = true;
-            let ref = db.collection("provider").doc(this.email);
+            let UserRef = db.collection("users").doc(this.email);
             // set the email as the doc id
-            ref.get().then(doc => {
+            UserRef.get().then(doc => {
               if (doc.exists) {
                 this.feedback = "This email is already taken";
                 // this.loading = false;
@@ -158,7 +158,7 @@ export default {
                 fb.auth()
                   .createUserWithEmailAndPassword(this.email, this.password)
                   .then(cred => {
-                    ref.set({
+                    UserRef.set({
                       email: this.email,
                       user_id: cred.user.uid
                     });
@@ -166,7 +166,7 @@ export default {
                   .then(() => {
                     // this.loading = false;
                     // this.success = "this username is avaliable";
-                    this.$router.push({ name: "dashboard" });
+                    this.$router.push({ name: "Home" });
                   })
                   .catch(error => {
                     // alert(error);
