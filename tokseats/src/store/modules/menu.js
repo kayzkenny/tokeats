@@ -7,18 +7,11 @@ const state = {
 
 // getters
 const getters = {
-  meals: state => {
-    return state.menu.filter(item => item.category === "meal");
-  },
-  singles: state => {
-    return state.menu.filter(item => item.category === "single");
-  },
-  sides: state => {
-    return state.menu.filter(item => item.category === "side");
-  },
-  drinks: state => {
-    return state.menu.filter(item => item.category === "drink");
-  }
+  // filter all menu items into categories (meals, singles, sides, drinks)
+  meals: state => state.menu.filter(item => item.category === "meal"),
+  singles: state => state.menu.filter(item => item.category === "single"),
+  sides: state => state.menu.filter(item => item.category === "side"),
+  drinks: state => state.menu.filter(item => item.category === "drink")
 };
 
 // actions
@@ -30,16 +23,13 @@ const actions = {
 
 // mutations
 const mutations = {
+  // get all menu items
   loadMenu(state) {
-    let prepMenu = [];
+    let proxyMenu = [];
     db.collection("menu")
       .get()
-      .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          prepMenu.push(doc.data());
-        });
-      });
-    state.menu = prepMenu;
+      .then(snapshot => snapshot.forEach(doc => proxyMenu.push(doc.data())));
+    state.menu = proxyMenu;
   }
 };
 
