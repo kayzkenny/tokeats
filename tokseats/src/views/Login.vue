@@ -7,7 +7,7 @@
       </v-col>
     </v-row>
     <v-row justify="center">
-      <v-card class="mx-auto pa-2" max-width="340">
+      <v-card class="mx-auto pa-2" max-width="320">
         <v-card-title class="title font-weight-regular justify-space-between">
           <span>Login</span>
         </v-card-title>

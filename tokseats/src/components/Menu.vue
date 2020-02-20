@@ -10,15 +10,21 @@
         class="px-3 py-3"
       >
         <v-row justify="center">
-          <v-col cols="12" lg="4" md="6" sm="6">
-            <v-skeleton-loader class="mx-4" max-width="350" type="card"></v-skeleton-loader>
+          <v-col cols="12" lg="3" md="4" sm="6">
+            <v-skeleton-loader class="mx-2" max-width="320" type="card"></v-skeleton-loader>
           </v-col>
-          <v-col cols="12" lg="4" md="6" sm="6">
-            <v-skeleton-loader class="mx-4" max-width="350" type="card"></v-skeleton-loader>
+          <v-col cols="12" lg="3" md="4" sm="6">
+            <v-skeleton-loader class="mx-2" max-width="320" type="card"></v-skeleton-loader>
+          </v-col>
+          <v-col cols="12" lg="3" md="4" sm="6">
+            <v-skeleton-loader class="mx-2" max-width="320" type="card"></v-skeleton-loader>
+          </v-col>
+          <v-col cols="12" lg="3" md="4" sm="6">
+            <v-skeleton-loader class="mx-2" max-width="320" type="card"></v-skeleton-loader>
           </v-col>
         </v-row>
       </v-sheet>
-      <v-row class="my-4" justify="center">
+      <v-row v-if="menuLoaded" class="my-4" justify="center">
         <v-card max-width="250" v-for="meal in meals" :key="meal.name" class="ma-4">
           <v-img height="220" :src="meal.imageUrl"></v-img>
           <v-card-title>&#8358;{{ meal.price }}</v-card-title>

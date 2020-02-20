@@ -10,8 +10,10 @@
         <v-divider></v-divider>
 
         <v-card-text class="white--text">
-          {{ new Date().getFullYear() }} —
-          <strong>Kehinde Akeredolu</strong>
+          &copy; {{ new Date().getFullYear() }} —
+          <strong>
+            <a href="https://github.com/kayzkenny">Kehinde Akeredolu</a>
+          </strong>
         </v-card-text>
       </v-card>
     </v-row>
