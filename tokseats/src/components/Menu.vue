@@ -88,7 +88,6 @@ export default {
   },
   updated() {
     this.menuLoaded = true;
-    console.log(this.menuLoaded);
   },
   inject: ["theme"]
 };

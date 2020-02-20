@@ -16,6 +16,11 @@ export default {
   components: {
     AppBar,
     Footer
+  },
+  created() {
+    this.$store
+      .dispatch("user/loadUserAction")
+      .catch(error => console.log(error)); // get user state
   }
 };
 </script>
