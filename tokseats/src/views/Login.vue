@@ -78,7 +78,7 @@ export default {
         // get reference to the users document, the users email is the id of the doc
         ref.get().then(doc => {
           if (!doc.exists) {
-            this.feedback = "this email is not registered";
+            this.feedback = "This email is not registered";
             this.loading = false;
           } else {
             fb.auth()
@@ -86,7 +86,7 @@ export default {
               .then(() => {
                 this.loading = false;
                 this.success = "You successfully logged in";
-                this.$store.dispatch("loadUserAction"); // get user state
+                this.$store.dispatch("user/loadUserAction"); // get user state
                 this.$router.replace({ name: "Home" });
               })
               .catch(error => {

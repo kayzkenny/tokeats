@@ -2,13 +2,16 @@ import { fb } from "../../db";
 
 // initial state
 const state = {
-  user: {}
+  currentUser: {}
 };
 
 // actions
 const actions = {
   loadUserAction({ commit }) {
     commit("loadUser");
+  },
+  resetUserAction({ commit }) {
+    commit("resetUser");
   }
 };
 
@@ -16,10 +19,10 @@ const actions = {
 const mutations = {
   // get all menu items
   loadUser(state) {
-    state.user = fb.auth().currentUser;
+    state.currentUser = fb.auth().currentUser;
   },
   resetUser(state) {
-    state.user = {};
+    state.currentUser = {};
   }
 };
 
