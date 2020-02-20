@@ -18,11 +18,7 @@ export default {
     Footer
   },
   created() {
-    this.$store.dispatch("loadMenuAction"); // get menu state
-    this.$store.dispatch("loadUserAction"); // get user state
-  },
-  updated() {
-    this.$store.dispatch("loadUserAction");
+    this.$store.dispatch("menu/loadMenuAction"); // get menu state
   }
 };
 </script>
