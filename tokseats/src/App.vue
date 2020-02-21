@@ -19,7 +19,7 @@ export default {
   },
   created() {
     this.$store
-      .dispatch("user/loadUserAction")
+      .dispatch("User/loadUserAction")
       .catch(error => console.log(error)); // get user state
   }
 };

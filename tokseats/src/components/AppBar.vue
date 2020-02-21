@@ -29,7 +29,7 @@ export default {
         .signOut()
         .then(() => {
           // Sign-out successful. set the user state to null
-          this.$store.dispatch("user/resetUserAction");
+          this.$store.dispatch("User/resetUserAction");
           this.$router.push({ name: "Login" });
         })
         .catch(error => alert(error.message));
@@ -37,11 +37,11 @@ export default {
   },
   computed: mapState({
     // get the user state
-    user: state => state.user.currentUser
+    user: state => state.currentUser
   }),
   updated() {
     console.log("AppBar Updated");
-    this.$store.dispatch("user/loadUserAction");
+    this.$store.dispatch("User/loadUserAction");
   }
 };
 </script>

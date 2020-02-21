@@ -64,10 +64,10 @@ import { mapGetters } from "vuex";
 export default {
   name: "Menu",
   computed: {
-    ...mapGetters("menu", ["meals", "singles", "sides", "drinks"])
+    ...mapGetters("Menu", ["meals", "singles", "sides", "drinks"])
   },
   created() {
-    this.$store.dispatch("menu/loadMenuAction").catch(error => alert(error)); // get menu state
+    this.$store.dispatch("Menu/loadMenuAction").catch(error => alert(error)); // get menu state
   },
   inject: ["theme"]
 };
