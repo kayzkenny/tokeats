@@ -60,10 +60,15 @@ const mutations = {
     Vue.set(state.cart, index, cartItem);
   },
   decreaseQuantity(state, item) {
-    let index = state.cart.findIndex(items => items.name == item.name);
-    const cartItem = state.cart.find(menuItem => menuItem === item);
-    cartItem.quantity--;
-    Vue.set(state.cart, index, cartItem);
+    // if the item's quantity = 1, just remove it
+    if (item.quantity == 1) {
+      state.cart = state.cart.filter(items => items !== item);
+    } else {
+      let index = state.cart.findIndex(items => items.name == item.name);
+      const cartItem = state.cart.find(menuItem => menuItem === item);
+      cartItem.quantity--;
+      Vue.set(state.cart, index, cartItem);
+    }
   }
 };
 
