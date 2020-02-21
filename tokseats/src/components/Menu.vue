@@ -81,10 +81,19 @@
           </v-card-actions>
         </v-card>
       </v-row>
-      <v-btn fab large right fixed bottom color="secondary" to="/checkout">
+      <v-btn
+        fab
+        large
+        right
+        fixed
+        bottom
+        color="secondary"
+        to="/checkout"
+        v-if="cart.length > 0"
+      >
         <v-badge top right overlap class="align-self-center" color="primary">
           <template v-slot:badge>
-            <span v-if="cart.length > 0">{{ cart.length }}</span>
+            <span>{{ cart.length }}</span>
           </template>
           <v-icon>mdi-cart</v-icon>
         </v-badge>
