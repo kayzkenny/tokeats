@@ -23,6 +23,9 @@ const actions = {
   addToCartAction({ commit }, item) {
     commit("addToCart", item);
   },
+  loadLocalCartAction({ commit }, localCart) {
+    commit("loadLocalCart", localCart);
+  },
   removeItemAction({ commit }, item) {
     commit("removeItem", item);
   },
@@ -46,6 +49,9 @@ const mutations = {
   },
   removeItem(state, item) {
     state.cart = state.cart.filter(items => items !== item);
+  },
+  loadLocalCart(state, localCart) {
+    state.cart = JSON.parse(localCart);
   },
   increaseQuantity(state, item) {
     let index = state.cart.findIndex(items => items.name == item.name);
