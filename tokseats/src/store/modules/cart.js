@@ -14,13 +14,14 @@ const getters = {
       total += item.price * item.quantity;
     });
     return total;
-  }
+  },
+  cart: state => state.cart
 };
 
 // actions
 const actions = {
   addToCartAction({ commit }, item) {
-    commit("loadMenu", item);
+    commit("addToCart", item);
   },
   removeItemAction({ commit }, item) {
     commit("removeItem", item);
