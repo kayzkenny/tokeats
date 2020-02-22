@@ -26,7 +26,6 @@
               type="email"
               :rules="[rules.required, rules.email]"
             ></v-text-field>
-
             <v-text-field
               v-model="password"
               label="Password"
@@ -39,7 +38,6 @@
             ></v-text-field>
           </v-card-text>
         </v-form>
-
         <v-card-actions>
           <v-btn small color="primary" @click="login" :loading="loading">Login</v-btn>
           <v-spacer></v-spacer>

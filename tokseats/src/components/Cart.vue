@@ -22,15 +22,12 @@
             <v-card flat color="transparent">
               <v-card-text>
                 <p class="subtitle-1 text-right">&#8358;{{ item.price }}</p>
-
                 <v-icon color="primary large" @click="increaseQuantity(item)">mdi-plus-box-outline</v-icon>
-
                 <span
                   class="d-inline body-1 mx-1"
                   color="#000000"
                   :cart="item.quantity"
                 >{{ item.quantity }}</span>
-
                 <v-icon color="primary large" @click="decreaseQuantity(item)">mdi-minus-box-outline</v-icon>
               </v-card-text>
             </v-card>

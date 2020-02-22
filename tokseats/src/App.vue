@@ -32,7 +32,6 @@ export default {
     })
   },
   updated() {
-    console.log("Updated Called");
     if (this.cart) {
       window.localStorage.localCart = JSON.stringify(this.cart);
     }

@@ -5,6 +5,11 @@ const state = {
   currentUser: {}
 };
 
+// getters
+const getters = {
+  user: state => state.currentUser
+};
+
 // actions
 const actions = {
   loadUserAction({ commit }) {
@@ -29,6 +34,7 @@ const mutations = {
 export default {
   namespaced: true,
   state,
+  getters,
   actions,
   mutations
 };
