@@ -8,11 +8,9 @@ const state = {
 // getters
 const getters = {
   // get the total price of all the items in the cart
-  total: function(state) {
+  total: state => {
     let total = 0;
-    state.cart.forEach(item => {
-      total += item.price * item.quantity;
-    });
+    state.cart.forEach(item => (total += item.price * item.quantity));
     return total;
   },
   cart: state => state.cart

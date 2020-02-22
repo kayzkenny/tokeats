@@ -97,27 +97,24 @@ export default {
       }
     }
   },
-  //   created() {
-  //     // populate the data properties with firestore user data
-  //     db.collection("users")
-  //       .doc(this.user.currentUser.email)
-  //       .get()
-  //       .then(snapshot => {
-  //         this.firstName = snapshot.data().firstName;
-  //         this.lastName = snapshot.data().lastName;
-  //         this.address = snapshot.data().address;
-  //         this.phoneNumber = snapshot.data().phoneNumber;
-  //         this.zipCode = snapshot.data().zipCode;
-  //       })
-  //       .catch(error => {
-  //         alert(error);
-  //       });
-  //   },
+  created() {
+    // populate the data properties with firestore user data
+    db.collection("users")
+      .doc(this.user.email)
+      .get()
+      .then(snapshot => {
+        this.firstName = snapshot.data().firstName;
+        this.lastName = snapshot.data().lastName;
+        this.address = snapshot.data().address;
+        this.phoneNumber = snapshot.data().phoneNumber;
+        this.zipCode = snapshot.data().zipCode;
+      })
+      .catch(error => {
+        alert(error);
+      });
+  },
   computed: {
     ...mapGetters("User", ["user"])
-  },
-  mounted() {
-    console.log(this.user);
   }
 };
 </script>

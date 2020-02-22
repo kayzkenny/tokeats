@@ -22,7 +22,6 @@ const actions = {
 
 // mutations
 const mutations = {
-  // get all menu items
   loadUser(state) {
     state.currentUser = fb.auth().currentUser;
   },

@@ -26,7 +26,6 @@ export default {
       fb.auth()
         .signOut()
         .then(() => {
-          // Sign-out successful. set the user state to null
           this.$store.dispatch("User/resetUserAction");
           this.$router.push({ name: "Login" });
         })

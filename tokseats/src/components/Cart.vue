@@ -73,15 +73,12 @@ export default {
   },
   methods: {
     increaseQuantity(item) {
-      // increase quantity of the cart item
       this.$store.dispatch("Cart/increaseQuantityAction", item);
     },
     decreaseQuantity(item) {
-      // decrease quantity of the cart item
       this.$store.dispatch("Cart/decreaseQuantityAction", item);
     },
     removeItem(item) {
-      // // remove an item from the cart item
       this.$store.dispatch("Cart/removeItemAction", item);
     }
   }
