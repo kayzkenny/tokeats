@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import { db } from "../db.js";
+import { mapGetters } from "vuex";
 export default {
   name: "DeliveryForm",
   data: () => ({
@@ -33,8 +35,31 @@ export default {
     firstName: null,
     address: null,
     phoneNumber: null,
-    zipCode: null,
-    checkbox: false
-  })
+    zipCode: null
+  }),
+  computed: {
+    ...mapGetters("User", ["user"])
+  },
+  created() {
+    if (this.user) {
+      let docRef = db.collection("users").doc(this.user.email);
+      docRef
+        .get()
+        .then(doc => {
+          if (doc.exists) {
+            this.address = doc.data().address;
+            this.phoneNumber = doc.data().phoneNumber;
+            this.lastName = doc.data().lastName;
+            this.firstName = doc.data().firstName;
+            this.zipCode = doc.data().zipCode;
+          } else {
+            alert.log("No such document!");
+          }
+        })
+        .catch(error => {
+          alert.log("Error getting documents: ", error);
+        });
+    }
+  }
 };
 </script>
