@@ -4,14 +4,8 @@
       <v-col cols="10">
         <v-alert type="error" v-if="feedback">{{ feedback }}</v-alert>
       </v-col>
-
-      <v-col cols="10">
-        <v-alert type="success" v-if="success">{{ success }}</v-alert>
-      </v-col>
-
       <v-col cols="10">
         <v-card flat color="transparent" class="display-1 mx-auto">Your Profile</v-card>
-
         <v-form class="mx-auto my-4" @submit.prevent="update">
           <v-container>
             <v-row>
@@ -48,18 +42,11 @@
 </template>
 
 <script>
-import { db } from "../db.js";
 import { mapGetters } from "vuex";
 export default {
-  name: "SignUp",
+  name: "Account",
   data: () => ({
     feedback: null,
-    success: null,
-    firstName: null,
-    lastName: null,
-    address: null,
-    phoneNumber: null,
-    zipCode: null,
     loading: false,
     snackbar: false,
     text: "Profile Updated",
@@ -68,53 +55,63 @@ export default {
   methods: {
     update() {
       this.loading = true;
-      if (
-        this.firstName &&
-        this.lastName &&
-        this.address &&
-        this.phoneNumber &&
-        this.zipCode
-      ) {
-        // update user data with the values provided in the form
-        db.collection("users")
-          .doc(this.user.email)
-          .set({
-            firstName: this.firstName,
-            lastName: this.lastName,
-            address: this.address,
-            phoneNumber: this.phoneNumber,
-            zipCode: this.zipCode
-          })
-          .then(() => {
-            this.loading = false;
-            this.snackbar = true;
-          })
-          .catch(error => {
-            alert("Error writing document: ", error);
-          });
-      } else {
-        this.feedback = "You must enter all fields";
-      }
+      this.$store
+        .dispatch("Account/updateAccountAction")
+        .then(() => {
+          this.loading = false;
+          this.snackbar = true;
+        })
+        .catch(error => {
+          this.feedback = "Error updating your profile, Reason: " + error;
+        });
     }
   },
-  created() {
-    // populate the data properties with firestore user data
-    db.collection("users")
-      .doc(this.user.email)
-      .get()
-      .then(snapshot => {
-        this.firstName = snapshot.data().firstName;
-        this.lastName = snapshot.data().lastName;
-        this.address = snapshot.data().address;
-        this.phoneNumber = snapshot.data().phoneNumber;
-        this.zipCode = snapshot.data().zipCode;
-      })
-      .catch(error => {
-        alert(error);
-      });
+  mounted() {
+    this.$store.dispatch("Account/loadAccountAction"); // get account state
   },
   computed: {
-    ...mapGetters("User", ["user"])
+    ...mapGetters("User", ["user"]),
+    // getters and setters for form fields
+    firstName: {
+      get() {
+        return this.$store._modules.root.state.Account.bio.firstName;
+      },
+      set(firstName) {
+        this.$store.dispatch("Account/updateFirstNameAction", firstName);
+      }
+    },
+    lastName: {
+      get() {
+        return this.$store._modules.root.state.Account.bio.lastName;
+      },
+      set(lastName) {
+        this.$store.dispatch("Account/updateLastNameAction", lastName);
+      }
+    },
+    address: {
+      get() {
+        return this.$store._modules.root.state.Account.bio.address;
+      },
+      set(address) {
+        this.$store.dispatch("Account/updateAddressAction", address);
+      }
+    },
+    phoneNumber: {
+      get() {
+        return this.$store._modules.root.state.Account.bio.phoneNumber;
+      },
+      set(phoneNumber) {
+        this.$store.dispatch("Account/updatePhoneNumberAction", phoneNumber);
+      }
+    },
+    zipCode: {
+      get() {
+        return this.$store._modules.root.state.Account.bio.zipCode;
+      },
+      set(zipCode) {
+        this.$store.dispatch("Account/updateZipCodeAction", zipCode);
+      }
+    }
   }
 };
 </script>

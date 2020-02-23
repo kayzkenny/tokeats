@@ -24,6 +24,27 @@ const getters = {
 const actions = {
   loadAccountAction({ commit }) {
     commit("loadAccount");
+  },
+  updateFirstNameAction({ commit }, firstName) {
+    commit("updateFirstName", firstName);
+  },
+  updateLastNameAction({ commit }, lastName) {
+    commit("updateLastName", lastName);
+  },
+  updateAddressAction({ commit }, address) {
+    commit("updateAddress", address);
+  },
+  updatePhoneNumberAction({ commit }, phoneNumber) {
+    commit("updatePhoneNumber", phoneNumber);
+  },
+  updateZipCodeAction({ commit }, zipCode) {
+    commit("updateZipCode", zipCode);
+  },
+  updateAccountAction({ commit }) {
+    return new Promise(resolve => {
+      commit("updateAccount");
+      resolve();
+    });
   }
 };
 
@@ -46,6 +67,36 @@ const mutations = {
           alert(error);
         });
     }
+  },
+  updateFirstName(state, firstName) {
+    state.bio.firstName = firstName;
+  },
+  updateLastName(state, lastName) {
+    state.bio.lastName = lastName;
+  },
+  updateAddress(state, address) {
+    state.bio.address = address;
+  },
+  updatePhoneNumber(state, phoneNumber) {
+    state.bio.phoneNumber = phoneNumber;
+  },
+  updateZipCode(state, zipCode) {
+    state.bio.zipCode = zipCode;
+  },
+  updateAccount(state) {
+    const currentUser = fb.auth().currentUser;
+    db.collection("users")
+      .doc(currentUser.email)
+      .set({
+        firstName: state.bio.firstName,
+        lastName: state.bio.lastName,
+        address: state.bio.address,
+        phoneNumber: state.bio.phoneNumber,
+        zipCode: state.bio.zipCode
+      })
+      .catch(error => {
+        console.log("Error writing document: ", error);
+      });
   }
 };
 

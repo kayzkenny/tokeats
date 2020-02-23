@@ -38,7 +38,7 @@ export default {
       zipCode: "zipCode"
     })
   },
-  created() {
+  mounted() {
     this.$store.dispatch("Account/loadAccountAction"); // get account state
   }
 };

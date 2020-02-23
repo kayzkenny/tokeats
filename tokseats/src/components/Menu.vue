@@ -91,7 +91,7 @@ export default {
     }),
     ...mapGetters("Menu", ["meals", "singles", "sides", "drinks"])
   },
-  created() {
+  mounted() {
     this.$store.dispatch("Menu/loadMenuAction"); // get menu state
   },
   inject: ["theme"]
