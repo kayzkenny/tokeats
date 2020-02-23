@@ -141,13 +141,11 @@ export default {
         case 2:
           if (this.password && this.password == this.confirmPassword) {
             this.feedback = null;
-            // this.loading = true;
             let UserRef = db.collection("users").doc(this.email);
             // set the email as the doc id
             UserRef.get().then(doc => {
               if (doc.exists) {
                 this.feedback = "This email is already taken";
-                // this.loading = false;
               } else {
                 this.step++;
                 fb.auth()
@@ -158,16 +156,8 @@ export default {
                       user_id: cred.user.uid
                     });
                   })
-                  .then(() => {
-                    // this.loading = false;
-                    // this.success = "this username is avaliable";
-                    this.$router.push({ name: "Home" });
-                  })
-                  .catch(error => {
-                    // alert(error);
-                    // this.loading = false;
-                    this.feedback = error.message;
-                  });
+                  .then(() => this.$router.push({ name: "Home" }))
+                  .catch(error => (this.feedback = error.message));
               }
             });
           } else {
