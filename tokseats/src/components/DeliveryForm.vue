@@ -26,17 +26,50 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
   name: "DeliveryForm",
   computed: {
-    ...mapGetters("Account", {
-      firstName: "firstName",
-      lastName: "lastName",
-      address: "address",
-      phoneNumber: "phoneNumber",
-      zipCode: "zipCode"
-    })
+    // getters and setters for form fields
+    firstName: {
+      get() {
+        return this.$store._modules.root.state.Account.bio.firstName;
+      },
+      set(firstName) {
+        this.$store.dispatch("Account/updateFirstNameAction", firstName);
+      }
+    },
+    lastName: {
+      get() {
+        return this.$store._modules.root.state.Account.bio.lastName;
+      },
+      set(lastName) {
+        this.$store.dispatch("Account/updateLastNameAction", lastName);
+      }
+    },
+    address: {
+      get() {
+        return this.$store._modules.root.state.Account.bio.address;
+      },
+      set(address) {
+        this.$store.dispatch("Account/updateAddressAction", address);
+      }
+    },
+    phoneNumber: {
+      get() {
+        return this.$store._modules.root.state.Account.bio.phoneNumber;
+      },
+      set(phoneNumber) {
+        this.$store.dispatch("Account/updatePhoneNumberAction", phoneNumber);
+      }
+    },
+    zipCode: {
+      get() {
+        return this.$store._modules.root.state.Account.bio.zipCode;
+      },
+      set(zipCode) {
+        this.$store.dispatch("Account/updateZipCodeAction", zipCode);
+      }
+    }
   },
   mounted() {
     this.$store.dispatch("Account/loadAccountAction"); // get account state
