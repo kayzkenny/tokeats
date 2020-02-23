@@ -33,6 +33,11 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: "/placed",
+    name: "Placed",
+    component: () => import("../views/Placed.vue") // lazy loaded route
   }
 ];
 
