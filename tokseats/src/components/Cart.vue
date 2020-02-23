@@ -54,22 +54,11 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   name: "Cart",
-  data: () => ({
-    lastName: null,
-    firstName: null,
-    address: null,
-    phoneNumber: null,
-    zipCode: null,
-    checkbox: false
-  }),
   computed: {
-    ...mapState({
-      cart: state => state.Cart.cart
-    }),
-    ...mapGetters("Cart", ["total"])
+    ...mapGetters("Cart", ["total", "cart"])
   },
   methods: {
     increaseQuantity(item) {

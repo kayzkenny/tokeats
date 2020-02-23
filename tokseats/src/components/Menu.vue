@@ -92,7 +92,7 @@ export default {
     ...mapGetters("Menu", ["meals", "singles", "sides", "drinks"])
   },
   created() {
-    this.$store.dispatch("Menu/loadMenuAction").catch(error => alert(error)); // get menu state
+    this.$store.dispatch("Menu/loadMenuAction"); // get menu state
   },
   inject: ["theme"]
 };

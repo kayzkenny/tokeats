@@ -19,12 +19,11 @@ export default {
     Footer
   },
   created() {
-    this.$store
-      .dispatch("User/loadUserAction")
-      .catch(error => console.log(error)); // get user state
-    this.$store
-      .dispatch("Cart/loadLocalCartAction", window.localStorage.localCart)
-      .catch(error => console.log(error)); // load the local cart
+    this.$store.dispatch("User/loadUserAction");
+    this.$store.dispatch(
+      "Cart/loadLocalCartAction",
+      window.localStorage.localCart
+    );
   },
   computed: {
     ...mapState({
