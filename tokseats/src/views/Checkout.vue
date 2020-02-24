@@ -83,7 +83,7 @@ export default {
             zipCode: this.zipCode
           });
         }
-        this.$router.push({ name: "Home" });
+        this.$router.replace({ name: "Placed" });
       } else {
         alert("Card payments are unavaliable at the moment");
       }

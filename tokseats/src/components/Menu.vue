@@ -58,9 +58,9 @@
         </v-row>
       </v-tab-item>
     </v-tabs-items>
-    <v-snackbar v-model="snackbar" :timeout="timeout">
+    <v-snackbar v-model="snackbar" :timeout="timeout" color="primary">
       {{ text }}
-      <v-btn color="primary" text @click="snackbar = false">Close</v-btn>
+      <v-btn text @click="snackbar = false">Close</v-btn>
     </v-snackbar>
   </v-container>
 </template>
