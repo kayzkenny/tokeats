@@ -1,10 +1,6 @@
-## ToksEats VueJS App
+# ToksEats VueJS App
 
-### View the live demo at the below url
-
-https://toksmeals.web.app
-
-### To fork this app run
+## To fork this app run
 
 ```shell
 npm install
