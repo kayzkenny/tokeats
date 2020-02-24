@@ -20,10 +20,12 @@ export default {
   },
   created() {
     this.$store.dispatch("User/loadUserAction");
-    this.$store.dispatch(
-      "Cart/loadLocalCartAction",
-      window.localStorage.localCart
-    );
+    if (window.localStorage.localCart) {
+      this.$store.dispatch(
+        "Cart/loadLocalCartAction",
+        window.localStorage.localCart
+      );
+    }
   },
   computed: {
     ...mapState({
