@@ -1,12 +1,9 @@
 .DS_Store
 tokseats/dist 
 tokseats/node_modules
-admin/dist 
-admin/node_modules
 
 # ignore firebase config
 tokseats/src/db.js
-admin/src/db.js
 
 # ignore firebase hosting cache
 *.cache
