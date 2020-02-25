@@ -1,4 +1,5 @@
 import { db } from "../../db";
+// import * as moment from "moment";
 
 // initial state
 const state = {
@@ -28,10 +29,12 @@ const mutations = {
         querySnapshot.forEach(function(doc) {
           proxyOrders.push(doc.data());
         });
+      })
+      .then(() => {
+        proxyOrders.forEach(order => {
+          order.orderDate = order.orderDate.toDate().toDateString();
+        });
       });
-    // proxyOrders.forEach(order => {
-    //   order.orderDate = order.orderDate.toDate();
-    // });
     state.orders = proxyOrders;
   }
 };

@@ -1,48 +1,34 @@
 <template>
-  <div>
+  <v-container>
+    <v-container></v-container>
     <v-row justify="center">
-      <v-col cols="10">
-        <v-card flat color="transparent" class="display-1 mx-auto"
+      <v-col cols="8">
+        <v-card flat color="transparent" class="display-1 mx-auto mt-4"
           >Your Orders</v-card
         >
       </v-col>
     </v-row>
     <v-row justify="center">
-      <v-col cols="10">
-        <!-- <v-simple-table>
-          <template v-slot:default>
-            <thead>
-              <tr>
-                <th class="text-left">Items</th>
-                <th class="text-left">Order Date</th>
-                <th class="text-left">Order Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="order in orders" :key="order.total">
-                <td>
-                  <div v-for="items in order" :key="items.name">
-                    <span v-for="meal in items" :key="meal.name">
-                      <span>{{ meal.quantity }}</span>
-                      <span>&nbsp;{{ meal.name }} &nbsp;</span>
-                    </span>
-                  </div>
-                </td>
-                <td>{{ order.orderDate.toDate().toLocaleDateString() }}</td>
-                <td>&#8358; {{ order.total }}</td>
-              </tr>
-            </tbody>
-          </template>
-        </v-simple-table> -->
-        <v-data-table
-          :headers="headers"
-          :items="orders"
-          :items-per-page="5"
-          class="elevation-1"
-        ></v-data-table>
+      <v-col cols="8">
+        <v-card>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+            class="pa-4"
+          ></v-text-field>
+          <v-data-table
+            :headers="headers"
+            :items="orders"
+            :items-per-page="5"
+            :search="search"
+          ></v-data-table>
+        </v-card>
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -53,6 +39,7 @@ export default {
     ...mapGetters("Orders", ["orders"])
   },
   data: () => ({
+    search: "",
     headers: [
       {
         text: "First Name",
@@ -60,8 +47,8 @@ export default {
         value: "firstName"
       },
       { text: "Last Name", value: "lastName" },
-      { text: "Phone Number", value: "phoneNumber" },
       { text: "Total", value: "total" },
+      { text: "Phone Number", value: "phoneNumber" },
       { text: "Order Date", value: "orderDate" }
     ]
   }),
