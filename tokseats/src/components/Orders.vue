@@ -26,7 +26,7 @@
                     </span>
                   </div>
                 </td>
-                <td>{{ order.orderDate.toDate().toLocaleDateString() }}</td>
+                <td>{{ order.orderDate }}</td>
                 <td>&#8358; {{ order.total }}</td>
               </tr>
             </tbody>
