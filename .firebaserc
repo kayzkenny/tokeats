@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "toksmeals"
+  },
+  "targets": {
+    "toksmeals": {
+      "hosting": {
+        "app": [
+          "toksmeals"
+        ],
+        "admin": [
+          "toksadmin"
+        ]
+      }
+    }
+  }
+}
