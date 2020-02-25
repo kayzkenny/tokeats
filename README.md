@@ -1,12 +1,12 @@
-# ToksEats VueJS App
+## ToksEats VueJS App
 
-## To fork this app run
+### View the live demos at
 
-```shell
-npm install
-```
+http://toksmeals.web.app/ // public site
 
-Include and update the db.js file below with your firebase config, which you can get from your firebase project settings
+http://toksmeals.web.app/ // admin site
+
+Include and update the db.js file below in both directories with your firebase config
 
 ```js
 // Firebase App (the core Firebase SDK) is always required and
