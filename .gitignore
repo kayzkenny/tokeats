@@ -8,6 +8,9 @@ tokseats/src/db.js
 # ignore firebase hosting cache
 *.cache
 
+# ignore firebase debug log cache
+*.log
+
 # local env files
 .env.local
 .env.*.local
