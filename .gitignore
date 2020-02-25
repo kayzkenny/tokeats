@@ -8,9 +8,6 @@ tokseats/src/db.js
 # ignore firebase hosting cache
 *.cache
 
-# ignore firebase debug log cache
-*.log
-
 # local env files
 .env.local
 .env.*.local
@@ -19,6 +16,7 @@ tokseats/src/db.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+firebase-debug.log*
 
 # Editor directories and files
 .idea
