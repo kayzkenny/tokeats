@@ -5,6 +5,7 @@
   },
   "hosting": [
     {
+      "target": "app",
       "public": "tokseats/dist",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
@@ -15,6 +16,7 @@
       ]
     },
     {
+      "target": "admin",
       "public": "admin/dist",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
