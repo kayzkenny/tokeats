@@ -6,9 +6,22 @@ const state = {
   orders: []
 };
 
+let totals = [];
+
 // getters
 const getters = {
-  orders: state => state.orders
+  orders: state => {
+    state.orders.forEach(order => {
+      order.orderDate = order.orderDate.toDate().toDateString();
+    });
+    return state.orders;
+  },
+  totals: state => {
+    state.orders.forEach(({ total }) => {
+      totals.push(total);
+    });
+    return totals;
+  }
 };
 
 // actions
@@ -28,11 +41,6 @@ const mutations = {
       .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
           proxyOrders.push(doc.data());
-        });
-      })
-      .then(() => {
-        proxyOrders.forEach(order => {
-          order.orderDate = order.orderDate.toDate().toDateString();
         });
       });
     state.orders = proxyOrders;

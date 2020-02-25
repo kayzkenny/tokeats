@@ -3,9 +3,7 @@
     <v-container></v-container>
     <v-row justify="center">
       <v-col cols="8">
-        <v-card flat color="transparent" class="display-1 mx-auto mt-4"
-          >Your Orders</v-card
-        >
+        <v-card flat color="transparent" class="display-1 mx-auto mt-4">Your Orders</v-card>
       </v-col>
     </v-row>
     <v-row justify="center">
@@ -19,12 +17,7 @@
             hide-details
             class="pa-4"
           ></v-text-field>
-          <v-data-table
-            :headers="headers"
-            :items="orders"
-            :items-per-page="5"
-            :search="search"
-          ></v-data-table>
+          <v-data-table :headers="headers" :items="orders" :items-per-page="5" :search="search"></v-data-table>
         </v-card>
       </v-col>
     </v-row>
