@@ -3,10 +3,11 @@ import { db } from "../../db";
 
 // initial state
 const state = {
-  orders: []
+  orders: [],
+  totals: []
 };
 
-let totals = [];
+// let totals = [];
 
 // getters
 const getters = {
@@ -18,9 +19,9 @@ const getters = {
   },
   totals: state => {
     state.orders.forEach(({ total }) => {
-      totals.push(total);
+      state.totals.push(total);
     });
-    return totals;
+    return state.totals;
   }
 };
 

@@ -10,6 +10,7 @@
             padding="24"
             stroke-linecap="round"
             smooth
+            auto-draw
           >
             <template v-slot:label="totals">&#8358;{{ totals.value }}</template>
           </v-sparkline>
@@ -34,11 +35,11 @@
 import { mapGetters } from "vuex";
 export default {
   name: "Dashboard",
-  created() {
+  async created() {
     this.$store.dispatch("Orders/loadOrdersAction");
-    // this.$store.dispatch("Orders/loadTotalsAction");
   },
-  mounted() {
+  async mounted() {
+    this.$store.dispatch("Orders/loadTotalsAction");
     console.log(this.totals);
   },
   computed: {
