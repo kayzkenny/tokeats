@@ -7,8 +7,6 @@ const state = {
   totals: []
 };
 
-// let totals = [];
-
 // getters
 const getters = {
   orders: state => {
