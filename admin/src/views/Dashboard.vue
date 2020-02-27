@@ -3,7 +3,16 @@
     <v-card class="mx-auto text-center" color="primary" dark max-width="600">
       <v-card-text>
         <v-sheet color="rgba(0, 0, 0, .12)">
+          <v-progress-circular
+            class="py-12"
+            v-if="!isLoaded"
+            :size="70"
+            :width="7"
+            color="rgba(255, 255, 255, .7)"
+            indeterminate
+          ></v-progress-circular>
           <v-sparkline
+            v-if="isLoaded"
             :value="totals"
             color="rgba(255, 255, 255, .7)"
             height="100"
@@ -43,7 +52,8 @@ export default {
     console.log(this.totals);
   },
   computed: {
-    ...mapGetters("Orders", ["totals"])
+    ...mapGetters("Orders", ["totals"]),
+    ...mapGetters("Orders", ["isLoaded"])
   }
 };
 </script>

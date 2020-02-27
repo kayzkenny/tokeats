@@ -18,11 +18,14 @@ const getters = {
     return state.orders;
   },
   totals: state => {
-    state.orders.forEach(({ total }) => {
-      state.totals.push(total);
-    });
+    if (state.totals.length < 1) {
+      state.orders.forEach(({ total }) => {
+        state.totals.push(total);
+      });
+    }
     return state.totals;
-  }
+  },
+  isLoaded: state => !!state.orders.length
 };
 
 // actions

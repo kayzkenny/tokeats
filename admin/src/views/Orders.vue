@@ -17,7 +17,14 @@
             hide-details
             class="pa-4"
           ></v-text-field>
-          <v-data-table :headers="headers" :items="orders" :items-per-page="5" :search="search"></v-data-table>
+          <v-progress-linear v-if="!isLoaded" indeterminate color="primary"></v-progress-linear>
+          <v-data-table
+            v-if="isLoaded"
+            :headers="headers"
+            :items="orders"
+            :items-per-page="5"
+            :search="search"
+          ></v-data-table>
         </v-card>
       </v-col>
     </v-row>
@@ -29,7 +36,8 @@ import { mapGetters } from "vuex";
 export default {
   name: "Orders",
   computed: {
-    ...mapGetters("Orders", ["orders"])
+    ...mapGetters("Orders", ["orders"]),
+    ...mapGetters("Orders", ["isLoaded"])
   },
   data: () => ({
     search: "",
