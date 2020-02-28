@@ -47,10 +47,6 @@ export default {
   async created() {
     this.$store.dispatch("Orders/loadOrdersAction");
   },
-  async mounted() {
-    this.$store.dispatch("Orders/loadTotalsAction");
-    console.log(this.totals);
-  },
   computed: {
     ...mapGetters("Orders", ["totals"]),
     ...mapGetters("Orders", ["isLoaded"])

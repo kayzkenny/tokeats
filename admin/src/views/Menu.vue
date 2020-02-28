@@ -15,7 +15,7 @@
               <v-card-title>&#8358;{{ meal.price }}</v-card-title>
               <v-card-subtitle>{{ meal.name }}</v-card-subtitle>
               <v-card-actions>
-                <v-btn text color="primary">Edit</v-btn>
+                <v-btn text color="primary" :to="{name: 'Editor', params: {menu_id: meal.id} }">Edit</v-btn>
               </v-card-actions>
             </v-card>
           </v-row>
@@ -40,7 +40,7 @@
             <v-card-title>&#8358;{{ side.price }}</v-card-title>
             <v-card-subtitle>{{ side.name }}</v-card-subtitle>
             <v-card-actions>
-              <v-btn text color="primary">Edit</v-btn>
+              <v-btn text color="primary" :to="{name: 'Editor', params: {menu_id: side.id} }">Edit</v-btn>
             </v-card-actions>
           </v-card>
         </v-row>
@@ -52,7 +52,7 @@
             <v-card-title>&#8358;{{ drink.price }}</v-card-title>
             <v-card-subtitle>{{ drink.name }}</v-card-subtitle>
             <v-card-actions>
-              <v-btn text color="primary">Edit</v-btn>
+              <v-btn text color="primary" :to="{name: 'Editor', params: {menu_id: drink.id} }">Edit</v-btn>
             </v-card-actions>
           </v-card>
         </v-row>
